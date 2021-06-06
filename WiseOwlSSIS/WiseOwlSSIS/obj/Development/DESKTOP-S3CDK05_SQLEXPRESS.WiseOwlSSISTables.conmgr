@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="DESKTOP-S3CDK05_SQLEXPRESS.WiseOwlSSISTables"
+  DTS:DTSID="{83F34664-138C-4500-B42D-C805D7E3D1B2}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=DESKTOP-S3CDK05\SQLEXPRESS;Initial Catalog=WiseOwlSSISTables;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

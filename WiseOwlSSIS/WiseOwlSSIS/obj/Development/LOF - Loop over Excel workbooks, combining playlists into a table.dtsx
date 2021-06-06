@@ -1,0 +1,1445 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/30/2021 6:42:38 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-S3CDK05"
+  DTS:CreatorName="DESKTOP-S3CDK05\El_Kamilo"
+  DTS:DTSID="{E406B936-A10E-4929-8124-8783BEE08FA6}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="2057"
+  DTS:ObjectName="LOF - Loop over Excel workbooks  combining playlists into a table"
+  DTS:PackageType="5"
+  DTS:VersionBuild="16"
+  DTS:VersionGUID="{BC77917E-4C9A-4512-A503-FCEDB978F830}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Excel Connection Manager]"
+      DTS:CreationName="EXCEL"
+      DTS:DTSID="{30F19AAD-5279-4E24-857B-E2C9A976D07E}"
+      DTS:ObjectName="Excel Connection Manager">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\El_Kamilo\Desktop\WiseOwlSSISExercises\Looping over files\Anyone.xlsx;Extended Properties=&quot;EXCEL 12.0 XML;HDR=YES&quot;;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{6B4BF479-CEF2-4DD4-AA5D-C9B99AE0CC27}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="FileName">
+      <DTS:VariableValue
+        DTS:DataType="8">C:\Users\El_Kamilo\Desktop\WiseOwlSSISExercises\Looping over files\Toddlers.xlsx</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1179EAA7-F8A8-4F2F-A979-4582A794544A}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Name">
+      <DTS:VariableValue
+        DTS:DataType="8">Some string</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Excel Files Loop"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Foreach Loop Container"
+      DTS:DTSID="{BD2CE6CC-FD80-4109-AEAC-193EE0F4623E}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Excel Files Loop">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{916D78F7-049C-45D4-80E7-A2CF3102E37C}"
+        DTS:ObjectName="{916D78F7-049C-45D4-80E7-A2CF3102E37C}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\Users\El_Kamilo\Desktop\WiseOwlSSISExercises\Looping over files" />
+            <FEFEProperty
+              FileSpec="*.xlsx" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Excel Files Loop\Combine files into table"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{A96DE196-0488-404F-8D96-A4B5F8F133AC}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Combine files into table"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\Anyone"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Anyone"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Anyone.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Anyone.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Output].Columns[TargetMarket]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Output].Columns[TargetMarket]"
+                          name="TargetMarket"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,255)@[User::Name]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,255)@[User::Name]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Anyone.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\Conditional Split"
+                  componentClassID="Microsoft.ConditionalSplit"
+                  contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+                  name="Conditional Split"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]"
+                      description="Input to the Conditional Split Transformation"
+                      name="Conditional Split Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Toddlers]"
+                      description="Output 1 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Toddlers"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">@[User::Name] == "Toddlers.xlsx"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::Name] == "Toddlers.xlsx"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">0</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Anyone]"
+                      description="Output 2 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Anyone"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">@[User::Name] == "Anyone.xlsx"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::Name] == "Anyone.xlsx"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">1</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Elderly]"
+                      description="Output 3 of the Conditional Split Transformation"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      exclusionGroup="1"
+                      name="Elderly"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                          name="Expression">@[User::Name] == "Elderly.xlsx"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Specifies the friendly version of the expression. This expression version uses column names."
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::Name] == "Elderly.xlsx"</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                          name="EvaluationOrder">2</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Conditional Split Default Output]"
+                      description="Default Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      name="Conditional Split Default Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          name="IsDefaultOut">true</property>
+                      </properties>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Conditional Split Error Output]"
+                      description="Error Output of the Conditional Split Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Conditional Split Error Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\Elderly"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Elderly"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Elderly.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Elderly.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Output].Columns[TargetMarket]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Output].Columns[TargetMarket]"
+                          name="TargetMarket"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,255)@[User::Name]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,255)@[User::Name]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Elderly.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\Excel Source"
+                  componentClassID="Microsoft.ExcelSource"
+                  contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Excel Source"
+                  name="Excel Source"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">Songs$</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mapping from parameters in the SQL command to variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Excel Files Loop\Combine files into table\Excel Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Excel Connection Manager]"
+                      connectionManagerRefId="Package.ConnectionManagers[Excel Connection Manager]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output]"
+                      name="Excel Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Artist]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Artist]"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Artist]"
+                          name="Artist"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Song]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Song]"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Song]"
+                          name="Song"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Artist]"
+                          dataType="wstr"
+                          length="255"
+                          name="Artist" />
+                        <externalMetadataColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].ExternalColumns[Song]"
+                          dataType="wstr"
+                          length="255"
+                          name="Song" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output]"
+                      isErrorOut="true"
+                      name="Excel Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[Artist]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[Artist]"
+                          name="Artist" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[Song]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[Song]"
+                          name="Song" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="SQL Server Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[PlayList]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Connections[OleDbConnection]"
+                      connectionManagerID="{83F34664-138C-4500-B42D-C805D7E3D1B2}:external"
+                      connectionManagerRefId="Project.ConnectionManagers[DESKTOP-S3CDK05_SQLEXPRESS.WiseOwlSSISTables]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].Columns[Artist]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Artist"
+                          externalMetadataColumnId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].ExternalColumns[Artist]"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Artist]" />
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].Columns[Song]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Song"
+                          externalMetadataColumnId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].ExternalColumns[Song]"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Song]" />
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].Columns[TargetMarket]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TargetMarket"
+                          externalMetadataColumnId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].ExternalColumns[TargetMarket]"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[TargetMarket]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].ExternalColumns[Artist]"
+                          dataType="wstr"
+                          length="255"
+                          name="Artist" />
+                        <externalMetadataColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].ExternalColumns[Song]"
+                          dataType="wstr"
+                          length="255"
+                          name="Song" />
+                        <externalMetadataColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input].ExternalColumns[TargetMarket]"
+                          dataType="wstr"
+                          length="255"
+                          name="TargetMarket" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\Toddlers"
+                  componentClassID="Microsoft.DerivedColumn"
+                  contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+                  description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+                  name="Toddlers"
+                  usesDispositions="true">
+                  <inputs>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Toddlers.Inputs[Derived Column Input]"
+                      description="Input to the Derived Column Transformation"
+                      name="Derived Column Input">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Output]"
+                      description="Default Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      name="Derived Column Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Toddlers.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Output].Columns[TargetMarket]"
+                          dataType="wstr"
+                          errorOrTruncationOperation="Computation"
+                          errorRowDisposition="FailComponent"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Output].Columns[TargetMarket]"
+                          name="TargetMarket"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Expression"
+                              name="Expression">(DT_WSTR,255)@[User::Name]</property>
+                            <property
+                              containsID="true"
+                              dataType="System.String"
+                              description="Derived Column Friendly Expression"
+                              expressionType="Notify"
+                              name="FriendlyExpression">(DT_WSTR,255)@[User::Name]</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Error Output]"
+                      description="Error Output of the Derived Column Transformation"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="Derived Column Error Output"
+                      synchronousInputId="Package\Excel Files Loop\Combine files into table\Toddlers.Inputs[Derived Column Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Excel Files Loop\Combine files into table\Union All"
+                  componentClassID="Microsoft.UnionAll"
+                  contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+                  name="Union All"
+                  version="1">
+                  <inputs>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 1]"
+                      name="Union All Input 1">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 1].Columns[Artist]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Artist"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Artist]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Artist]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 1].Columns[Song]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Song"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Song]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Song]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 1].Columns[TargetMarket]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TargetMarket"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Output].Columns[TargetMarket]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[TargetMarket]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 2]"
+                      hasSideEffects="true"
+                      name="Union All Input 2">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 2].Columns[Artist]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Artist"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Artist]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Artist]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 2].Columns[Song]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Song"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Song]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Song]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 2].Columns[TargetMarket]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TargetMarket"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Output].Columns[TargetMarket]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[TargetMarket]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 3]"
+                      hasSideEffects="true"
+                      name="Union All Input 3">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 3].Columns[Artist]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Artist"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Artist]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Artist]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 3].Columns[Song]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="Song"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output].Columns[Song]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Song]}</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 3].Columns[TargetMarket]"
+                          cachedDataType="wstr"
+                          cachedLength="255"
+                          cachedName="TargetMarket"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Output].Columns[TargetMarket]">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Output column lineage ID"
+                              name="OutputColumnLineageID">#{Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[TargetMarket]}</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                    <input
+                      refId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 4]"
+                      dangling="true"
+                      hasSideEffects="true"
+                      name="Union All Input 4">
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1]"
+                      name="Union All Output 1">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Artist]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Artist]"
+                          name="Artist" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Song]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[Song]"
+                          name="Song" />
+                        <outputColumn
+                          refId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[TargetMarket]"
+                          dataType="wstr"
+                          length="255"
+                          lineageId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1].Columns[TargetMarket]"
+                          name="TargetMarket" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Anyone]"
+                  endId="Package\Excel Files Loop\Combine files into table\Anyone.Inputs[Derived Column Input]"
+                  name="Anyone"
+                  startId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Anyone]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Derived Column Output]"
+                  endId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 1]"
+                  name="Derived Column Output"
+                  startId="Package\Excel Files Loop\Combine files into table\Toddlers.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Derived Column Output1]"
+                  endId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 2]"
+                  name="Derived Column Output"
+                  startId="Package\Excel Files Loop\Combine files into table\Anyone.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Derived Column Output2]"
+                  endId="Package\Excel Files Loop\Combine files into table\Union All.Inputs[Union All Input 3]"
+                  name="Derived Column Output"
+                  startId="Package\Excel Files Loop\Combine files into table\Elderly.Outputs[Derived Column Output]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Elderly]"
+                  endId="Package\Excel Files Loop\Combine files into table\Elderly.Inputs[Derived Column Input]"
+                  name="Elderly"
+                  startId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Elderly]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Excel Source Output]"
+                  endId="Package\Excel Files Loop\Combine files into table\Conditional Split.Inputs[Conditional Split Input]"
+                  name="Excel Source Output"
+                  startId="Package\Excel Files Loop\Combine files into table\Excel Source.Outputs[Excel Source Output]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Toddlers]"
+                  endId="Package\Excel Files Loop\Combine files into table\Toddlers.Inputs[Derived Column Input]"
+                  name="Toddlers"
+                  startId="Package\Excel Files Loop\Combine files into table\Conditional Split.Outputs[Toddlers]" />
+                <path
+                  refId="Package\Excel Files Loop\Combine files into table.Paths[Union All Output 1]"
+                  endId="Package\Excel Files Loop\Combine files into table\SQL Server Destination.Inputs[OLE DB Destination Input]"
+                  name="Union All Output 1"
+                  startId="Package\Excel Files Loop\Combine files into table\Union All.Outputs[Union All Output 1]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Excel Files Loop\Retrieve file name"
+          DTS:CreationName="Microsoft.ExpressionTask"
+          DTS:Description="Expression Task"
+          DTS:DTSID="{7FCF02CB-488C-4D2C-934D-3FEF1E9E8002}"
+          DTS:ExecutableType="Microsoft.ExpressionTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Retrieve file name"
+          DTS:TaskContact="Expression Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExpressionTask
+              Expression="@[User::Name] =  RIGHT( @[User::FileName] , &#xA;&#x9;FINDSTRING( REVERSE( @[User::FileName]  ) ,&quot;\\&quot;,1 )  - 1&#xA;)" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Excel Files Loop.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{45226502-4567-45CB-BD1B-63ADC171B265}"
+          DTS:From="Package\Excel Files Loop\Retrieve file name"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Excel Files Loop\Combine files into table" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{A92C198A-D333-443A-BED9-2C77C62D5A93}"
+          DTS:ObjectName="{A92C198A-D333-443A-BED9-2C77C62D5A93}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::FileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate SQL table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1E83FACE-3E6C-46EA-8CDA-A676196698C6}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate SQL table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{83F34664-138C-4500-B42D-C805D7E3D1B2}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dbo.Playlist;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{8928029E-C4A2-4DAC-85CD-B48D15B95F41}"
+      DTS:From="Package\Truncate SQL table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Excel Files Loop" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Truncate SQL table"
+          TopLeft="214,18" />
+        <NodeLayout
+          Size="190,42"
+          Id="Package\Excel Files Loop\Combine files into table"
+          TopLeft="44,91" />
+        <NodeLayout
+          Size="164,42"
+          Id="Package\Excel Files Loop\Retrieve file name"
+          TopLeft="61,23" />
+        <EdgeLayout
+          Id="Package\Excel Files Loop.PrecedenceConstraints[Constraint]"
+          TopLeft="141,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,26"
+              Start="0,0"
+              End="0,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="309,200"
+          Size="309,243"
+          Id="Package\Excel Files Loop"
+          TopLeft="147,92" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="300,60">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,32"
+              Start="0,0"
+              End="0,24.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="In Order to add dynamic Connection String we have to retrieve (in my case fully qualified path to each file) using Foreach Loop and then &#xD;&#xA;Map to variable. In Data FLow Task connect Source to Excel file ( to build Connection) and after that go to Properties and Expressions"
+          ParentId="Package"
+          FontInfo="{assembly:Null}"
+          Size="392,104"
+          Id="0e6bcc17-9985-4d8e-9e06-9542b98aa4e4"
+          TopLeft="590,27" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Excel Files Loop\Combine files into table">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188,42"
+          Id="Package\Excel Files Loop\Combine files into table\SQL Server Destination"
+          TopLeft="328,326" />
+        <AnnotationLayout
+          Text="Conditional Split to qualify each subsequent rows to specific group  (based on the name of the file)"
+          ParentId="Package\Excel Files Loop\Combine files into table"
+          FontInfo="{assembly:Null}"
+          Size="156,104"
+          Id="d3d249e9-3160-4083-a88f-549000720ac9"
+          TopLeft="781,124" />
+        <NodeLayout
+          Size="155,42"
+          Id="Package\Excel Files Loop\Combine files into table\Conditional Split"
+          TopLeft="247,102" />
+        <NodeLayout
+          Size="119,42"
+          Id="Package\Excel Files Loop\Combine files into table\Toddlers"
+          TopLeft="43,165" />
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Toddlers]"
+          TopLeft="247,123">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-85,63"
+              Start="0,0"
+              End="-77.5,63">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-38.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-38.5,0"
+                    Point2="-42.5,0"
+                    Point3="-42.5,4" />
+                  <mssgle:LineSegment
+                    End="-42.5,59" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-42.5,59"
+                    Point2="-42.5,63"
+                    Point3="-46.5,63" />
+                  <mssgle:LineSegment
+                    End="-77.5,63" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-62.378671875,-15.7490234375,39.75734375,9.7490234375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="114,42"
+          Id="Package\Excel Files Loop\Combine files into table\Anyone"
+          TopLeft="275,181" />
+        <NodeLayout
+          Size="111,42"
+          Id="Package\Excel Files Loop\Combine files into table\Elderly"
+          TopLeft="613,175" />
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Anyone]"
+          TopLeft="300,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,37"
+              Start="0,0"
+              End="32,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.0268199233716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.0268199233716"
+                    Point2="0,15.0268199233716"
+                    Point3="4,15.0268199233716" />
+                  <mssgle:LineSegment
+                    End="28,15.0268199233716" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28,15.0268199233716"
+                    Point2="32,15.0268199233716"
+                    Point3="32,19.0268199233716" />
+                  <mssgle:LineSegment
+                    End="32,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-1.3094140625,20.0268199233716,34.618828125,11.2822265625"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Elderly]"
+          TopLeft="349,144">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="319.5,31"
+              Start="0,0"
+              End="319.5,23.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.59003831417625" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.59003831417625"
+                    Point2="0,12.5900383141762"
+                    Point3="4,12.5900383141762" />
+                  <mssgle:LineSegment
+                    End="315.5,12.5900383141762" />
+                  <mssgle:CubicBezierSegment
+                    Point1="315.5,12.5900383141762"
+                    Point2="319.5,12.5900383141762"
+                    Point3="319.5,16.5900383141762" />
+                  <mssgle:LineSegment
+                    End="319.5,23.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="144.35306640625,17.5900383141762,30.7938671875,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <AnnotationLayout
+          Text="In Excel we DONT set ConnectionString, ratther ExcelFilePath!!!"
+          ParentId="Package\Excel Files Loop\Combine files into table"
+          FontInfo="{assembly:Null}"
+          Size="359,60"
+          Id="97a165c1-d5ff-4f55-9403-e1d1df8ccf5d"
+          TopLeft="480,24" />
+        <NodeLayout
+          Size="139,42"
+          Id="Package\Excel Files Loop\Combine files into table\Excel Source"
+          TopLeft="256,17" />
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Excel Source Output]"
+          TopLeft="325,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43"
+              Start="0,0"
+              End="0,35.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="121,42"
+          Id="Package\Excel Files Loop\Combine files into table\Union All"
+          TopLeft="383,246" />
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Derived Column Output]"
+          TopLeft="102.5,207">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="312.75,39"
+              Start="0,0"
+              End="312.75,31.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.4393530997305" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.4393530997305"
+                    Point2="0,25.4393530997305"
+                    Point3="4,25.4393530997305" />
+                  <mssgle:LineSegment
+                    End="308.75,25.4393530997305" />
+                  <mssgle:CubicBezierSegment
+                    Point1="308.75,25.4393530997305"
+                    Point2="312.75,25.4393530997305"
+                    Point3="312.75,29.4393530997305" />
+                  <mssgle:LineSegment
+                    End="312.75,31.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Derived Column Output1]"
+          TopLeft="332,223">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.5,23"
+              Start="0,0"
+              End="111.5,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,7.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,7.5"
+                    Point2="0,11.5"
+                    Point3="4,11.5" />
+                  <mssgle:LineSegment
+                    End="107.5,11.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="107.5,11.5"
+                    Point2="111.5,11.5"
+                    Point3="111.5,15.5" />
+                  <mssgle:LineSegment
+                    End="111.5,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Derived Column Output2]"
+          TopLeft="668.5,217">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-196.75,29"
+              Start="0,0"
+              End="-196.75,21.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.9164420485175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.9164420485175"
+                    Point2="0,18.9164420485175"
+                    Point3="-4,18.9164420485175" />
+                  <mssgle:LineSegment
+                    End="-192.75,18.9164420485175" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-192.75,18.9164420485175"
+                    Point2="-196.75,18.9164420485175"
+                    Point3="-196.75,22.9164420485175" />
+                  <mssgle:LineSegment
+                    End="-196.75,21.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Excel Files Loop\Combine files into table.Paths[Union All Output 1]"
+          TopLeft="443.5,288">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-21.5,38"
+              Start="0,0"
+              End="-21.5,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15"
+                    Point2="0,19"
+                    Point3="-4,19" />
+                  <mssgle:LineSegment
+                    End="-17.5,19" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-17.5,19"
+                    Point2="-21.5,19"
+                    Point3="-21.5,23" />
+                  <mssgle:LineSegment
+                    End="-21.5,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Files Loop\Combine files into table\SQL Server Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Excel Files Loop\Combine files into table\Excel Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

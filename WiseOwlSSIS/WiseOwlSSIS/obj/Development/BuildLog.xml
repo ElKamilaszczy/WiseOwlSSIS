@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ProjectInfo>
+    <Name>WiseOwlSSIS</Name>
+    <LastWriteTime>2021-06-06T17:24:52.2940448Z</LastWriteTime>
+    <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+  </ProjectInfo>
+  <LastBuildInfos>
+    <ProjectBuildItemInfo>
+      <Name>Export a table of Grand Prix events to a new flat file.dtsx</Name>
+      <LastWriteTime>2020-12-16T17:40:18.0561341Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Export a CSV flat file to a SQL Server table.dtsx</Name>
+      <LastWriteTime>2020-12-16T17:50:24.8419737Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Create a random playlist from an Excel workbook of songs.dtsx</Name>
+      <LastWriteTime>2020-12-16T18:01:42.984908Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DCT - Combine an Excel workbook and CSV file into a SQL Server table.dtsx</Name>
+      <LastWriteTime>2020-12-16T18:26:57.2355309Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>DCT - Import an Excel songs list to SQL Server, converting data.dtsx</Name>
+      <LastWriteTime>2020-12-16T18:35:26.7635102Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CST - Use a conditional split to count two types of row in a table.dtsx</Name>
+      <LastWriteTime>2020-12-16T18:47:55.1757189Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CST - Assign rollercoasters a scariness rating using a conditional split.dtsx</Name>
+      <LastWriteTime>2020-12-16T19:17:11.2093658Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CST - Create aggregate shopping statistics depending on store type.dtsx</Name>
+      <LastWriteTime>2021-05-30T15:19:33.0325344Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Strange statistics.dtsx</Name>
+      <LastWriteTime>2020-12-17T18:17:48.7768863Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>CST - Show a summary of Brexit voting figures by status.dtsx</Name>
+      <LastWriteTime>2020-12-17T20:51:48.5750969Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>LT _AVG- Find the id number for each X Factor mentor.dtsx</Name>
+      <LastWriteTime>2020-12-20T19:24:30.8861354Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>LT_EAS- Get a list of all the dinosaur time periods which dont match.dtsx</Name>
+      <LastWriteTime>2020-12-20T19:24:30.9993701Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>LT_AVG - Find the differences between two lists of shopping centres.dtsx</Name>
+      <LastWriteTime>2021-05-30T16:56:37.1521018Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>LOF - Loop over Excel workbooks, combining playlists into a table.dtsx</Name>
+      <LastWriteTime>2021-05-30T19:54:45.5294613Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+  </LastBuildInfos>
+</BuildLog>
